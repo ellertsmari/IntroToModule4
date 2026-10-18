@@ -436,5 +436,124 @@
     }
   });
 
+  /* ---------- design · contrast checker (WCAG 2 relative luminance) ---------- */
+  const lum = hex => {
+    const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255)
+      .map(c => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  const ratio = (a, b) => { const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x); return (hi + 0.05) / (lo + 0.05); };
+  const CHECKS = [["Body text", "AA", 4.5], ["Large text", "AA", 3], ["Icons and input borders", "AA", 3], ["Body text", "AAA (bonus)", 7]];
+  const ccFg = $("#ccFg"), ccBg = $("#ccBg");
+  function renderContrast() {
+    const fg = ccFg.value, bg = ccBg.value, r = ratio(fg, bg);
+    const pv = $("#ccPreview");
+    pv.style.setProperty("--fg", fg); pv.style.setProperty("--bg", bg);
+    $("#ccRatio").textContent = String(Math.floor(r * 100) / 100); // floor, so 4.499 never shows as a pass
+    $("#ccChecks").innerHTML = CHECKS.map(([what, lvl, need]) =>
+      `<li><span class="badge ${r >= need ? "pass" : "fail"}">${r >= need ? "pass" : "fail"}</span><span><b>${what}</b> · ${lvl} needs ${need} : 1</span></li>`).join("");
+    $$(".cc-pair").forEach(p => p.classList.toggle("on", p.dataset.fg === fg && p.dataset.bg === bg));
+  }
+  function setPair(fg, bg) { ccFg.value = fg; ccBg.value = bg; renderContrast(); }
+  $$(".cc-pair").forEach(p => p.addEventListener("click", () => setPair(p.dataset.fg, p.dataset.bg)));
+  [ccFg, ccBg].forEach(i => i.addEventListener("input", renderContrast));
+  $(".s-contrast").addEventListener("slide:enter", () => setPair("#9a9a9a", "#ffffff"));
+  renderContrast();
+
+  /* ---------- design · annotation layers ---------- */
+  const LAYERS = {
+    alt: `<b>Alt text</b> is what an image is called for anyone who can't see it. Describe what it does <b>on this page</b>, not what is in it: on a tour company's front page, this photo is "A guide leading hikers up Hekla's snowy ridge". In an article about eruptions, the same photo would get different words. Purely decorative? Say so, and it gets an empty alt.`,
+    focus: `<b>Focus order</b> is the order a keyboard user moves through the page with Tab. Someone who can't use a mouse depends on it. You decide the order; the developer builds it in the same order. Here: the three menu links, then "Book a tour".`,
+    head: `<b>Headings</b>: mark which text is H1, H2, H3. Screen reader users jump from heading to heading the way you skim with your eyes. One H1 per page.`,
+    lm: `<b>Landmarks</b> mark the regions: header, nav, main, footer. A navigation bar built from divs is announced as nothing; a <code>nav</code> is announced as navigation, so people can jump straight to it.`,
+  };
+  function showLayer(k) {
+    const f = $("#annotFrame");
+    ["alt", "focus", "head", "lm"].forEach(x => f.classList.toggle(`show-${x}`, x === k));
+    $$(".layer").forEach(b => b.classList.toggle("on", b.dataset.layer === k));
+    $("#annotSay").innerHTML = `${LAYERS[k]}<span class="dev">In code guide 4.1 this becomes a test the build must pass.</span>`;
+  }
+  $$(".layer").forEach(b => b.addEventListener("click", () => showLayer(b.dataset.layer)));
+  $(".s-annot").addEventListener("slide:enter", () => showLayer("alt"));
+  showLayer("alt");
+
+  /* ---------- design · smart component ---------- */
+  const sc = { variant: "primary", icon: "★" };
+  function renderSmart() {
+    const btn = $("#scBtn"), disabled = $("#spDisabled").checked, showIcon = $("#spIcon").checked;
+    btn.className = `sc-btn ${sc.variant}${disabled ? " disabled" : ""}`;
+    $("#scLabel").textContent = $("#spLabel").value || " ";
+    $("#scIc").hidden = !showIcon;
+    $("#scIc").textContent = sc.icon;
+    const cap = s => s[0].toUpperCase() + s.slice(1);
+    $("#scName").textContent = `Button / ${cap(sc.variant)} / ${disabled ? "Disabled" : "Default"}`;
+  }
+  $$("#spVariant button").forEach(b => b.addEventListener("click", () => {
+    sc.variant = b.dataset.v; $$("#spVariant button").forEach(x => x.classList.toggle("on", x === b)); renderSmart();
+  }));
+  $$("#spSwap button").forEach(b => b.addEventListener("click", () => {
+    sc.icon = b.dataset.i; $$("#spSwap button").forEach(x => x.classList.toggle("on", x === b));
+    $("#spIcon").checked = true; renderSmart();
+  }));
+  ["#spLabel", "#spIcon", "#spDisabled"].forEach(s => $(s).addEventListener("input", renderSmart));
+  renderSmart();
+
+  /* ---------- design · usability heuristics ---------- */
+  const HEUR = [
+    ["Visibility of system status", "Always show what is going on: loading, saved, where you are."],
+    ["Match the real world", "Use the users' words and order, not the company's."],
+    ["User control and freedom", "Give people an easy way out: back, undo, cancel."],
+    ["Consistency and standards", "Same thing, same look, same word. Follow the conventions people already know."],
+    ["Error prevention", "Design so the mistake can't happen, before you write an error message for it."],
+    ["Recognition over recall", "Show the options. Don't make people remember them from another screen."],
+    ["Flexibility and efficiency", "Shortcuts for experienced users that don't get in a beginner's way."],
+    ["Aesthetic, minimalist design", "Every extra element competes with the ones that matter. Look at computer.is."],
+    ["Recover from errors", "Plain-language errors that say what happened and how to fix it."],
+    ["Help and documentation", "Best not needed; if it is, short, findable and about the task at hand."],
+  ];
+  $("#heurChips").innerHTML = HEUR.map(([h], i) => `<button class="heur-chip" data-h="${i}"><span>${i + 1}</span>${esc(h)}</button>`).join("");
+  $$(".heur-chip").forEach(c => c.addEventListener("click", () => {
+    const [h, say] = HEUR[c.dataset.h];
+    $$(".heur-chip").forEach(x => x.classList.toggle("on", x === c));
+    $("#heurSay").innerHTML = `<b>${esc(h)}.</b> ${esc(say)}`;
+  }));
+  $(".s-redesign").addEventListener("slide:enter", () => {
+    $$(".heur-chip").forEach(x => x.classList.remove("on"));
+    $("#heurSay").textContent = "Click a heuristic.";
+  });
+
+  /* ---------- design · see it, then feel it ---------- */
+  const MOODS = { calm: "Calm: 400 ms, ease-in-out. Quiet and even.", playful: "Playful: 550 ms with an overshoot. It bounces a little.", snappy: "Snappy: 140 ms, ease-out. Business-like, no fuss." };
+  $$("#moodSeg button").forEach(b => b.addEventListener("click", () => {
+    $$("#moodSeg button").forEach(x => x.classList.toggle("on", x === b));
+    $("#feelStage").className = `feel-stage mood-${b.dataset.m}`;
+    $("#moodSay").textContent = `${MOODS[b.dataset.m]} Click the toggle, hover the button.`;
+  }));
+  $("#tgl").addEventListener("click", e => {
+    const t = e.currentTarget; t.setAttribute("aria-pressed", t.getAttribute("aria-pressed") !== "true");
+  });
+
+  /* ---------- group project · double diamond ---------- */
+  const STAGES = {
+    discover: ["Discover", "Put yourselves in the users' shoes. <b>Interview potential users</b> about the problem area before deciding anything."],
+    define: ["Define", "<b>Analyse what they told you</b> and choose the one problem worth solving. The first diamond ends with the right problem."],
+    develop: ["Develop", "<b>Brainstorm</b> solutions, then a <b>mobile-first lo-fi prototype</b>: sketches, user flow, wireframes. <b>Test it</b> with users."],
+    deliver: ["Deliver", "A well-connected <b>style guide</b> and a polished <b>hi-fi prototype</b>, accessible from the start, <b>finalised from user feedback</b>."],
+  };
+  $$(".dia").forEach(g => {
+    g.setAttribute("tabindex", "0"); g.setAttribute("role", "button");
+    const pick = () => {
+      const [name, say] = STAGES[g.dataset.st];
+      $$(".dia").forEach(x => x.classList.toggle("on", x === g));
+      $("#sprintSay").innerHTML = `<span class="st">${name}</span>${say}`;
+    };
+    g.addEventListener("click", pick);
+    g.addEventListener("keydown", e => { if (e.key === "Enter") pick(); });
+  });
+  $(".s-sprint").addEventListener("slide:enter", () => {
+    $$(".dia").forEach(x => x.classList.remove("on"));
+    $("#sprintSay").innerHTML = `<p class="dim">Click a stage.</p>`;
+  });
+
   showSlide(isNaN(fromHash) ? 0 : fromHash);
 })();
