@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connecting to the World · Vefskólinn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <canvas id="routes"></canvas>
+</div>
+
+<div class="deck" id="deck">
+
+<!-- ===== 1 · TITLE ===== -->
+<section class="slide s-title" data-notes="Welcome to Module 4, Connecting to the World. The name is old: it has always been the module where your app starts talking to other systems through APIs. What changed is that in 2026 the connections run in three directions, and the three coloured lines on this slide are the whole module. Blue: your app talks to the world. Orange: your coding agent talks to the world, to Figma, to the browser. Green, the new one: the world's AI agents come to your app. Four weeks of guides, then the group project. Press right.">
+  <div class="title-map rise" style="--d:50" aria-hidden="true">
+    <svg viewBox="0 0 640 520">
+      <g class="grat">
+        <ellipse cx="320" cy="260" rx="250" ry="250"/><ellipse cx="320" cy="260" rx="160" ry="250"/><ellipse cx="320" cy="260" rx="70" ry="250"/>
+        <line x1="70" y1="260" x2="570" y2="260"/><line x1="96" y1="150" x2="544" y2="150"/><line x1="96" y1="370" x2="544" y2="370"/>
+      </g>
+      <path class="route r-app" d="M320 300 Q 190 230 110 360"/>
+      <path class="route r-agent" d="M150 120 Q 250 170 312 288"/>
+      <path class="route r-world" d="M560 150 Q 450 190 332 290"/>
+      <circle class="city app" cx="320" cy="300" r="16"/>
+      <circle class="city" cx="110" cy="360" r="9"/>
+      <circle class="city" cx="150" cy="120" r="9"/>
+      <circle class="city" cx="560" cy="150" r="9"/>
+    </svg>
+  </div>
+  <div class="title-block">
+    <p class="eyebrow rise" style="--d:100">Vefskólinn · Module 4</p>
+    <h1 class="rise" style="--d:250">Connecting<br>to the <span class="hl">World</span></h1>
+    <p class="sub rise" style="--d:500">Your app talks to the world. Your agent talks to the world.<br><em>And now the world's agents talk to your app.</em></p>
+    <ul class="legend rise" style="--d:700">
+      <li><i class="lg app"></i>your app → the world</li>
+      <li><i class="lg agent"></i>your agent → the world</li>
+      <li><i class="lg world"></i>the world's agents → your app</li>
+    </ul>
+    <p class="hand hint rise" style="--d:900">press → to begin</p>
+  </div>
+</section>
+
+<!-- ===== 2 · WHERE WE ARE ===== -->
+<section class="slide s-where" data-notes="Where we are. In Module 3 you already did most of what the old Module 4 used to teach. You built the same app in React, Vue and Angular with an agent, so you have components, props, state and effects. You added a back end, fetch, a database and a secret key. So Module 4 is not 'learn React'. It is about connections, and about getting good at directing an agent: checking its work, teaching it your rules, and knowing when it is wrong.">
+  <p class="eyebrow rise">Where we are</p>
+  <h2 class="rise">You already have the <span class="hl">engine</span></h2>
+  <div class="path rise" style="--d:200">
+    <div class="stop"><b>Module 3</b><span>The fundamentals: TypeScript, frameworks, a first back end</span></div>
+    <span class="arrow">→</span>
+    <div class="stop now"><b>Module 4 guides</b><span>Design first, then code. About four weeks</span></div>
+    <span class="arrow">→</span>
+    <div class="stop"><b>Group project</b><span>Connecting to the World. Groups of 4–5</span></div>
+  </div>
+  <div class="recap">
+    <span class="chip frag">TypeScript</span>
+    <span class="chip frag">two CSS frameworks, compared</span>
+    <span class="chip frag">React, Vue and Angular, built by your agent</span>
+    <span class="chip frag">components, props, state, effects</span>
+    <span class="chip frag"><code>fetch()</code>, a server, a database</span>
+    <span class="chip frag">a key that lives on the server</span>
+    <span class="chip frag on-chip">you describe, the agent builds, you check</span>
+  </div>
+  <p class="takeaway frag">Module 4 is not "learn a framework". It is <em>connections</em>, and getting good at <em>directing and checking</em> an agent.</p>
+</section>
+
+<!-- ===== 3 · THREE DIRECTIONS ===== -->
+<section class="slide s-three" data-notes="The three directions. Click each route, or press 1, 2, 3. One, blue: your app connects to the world. APIs, live data, and an AI model that runs inside Chrome for free. That is guide 4.3. Two, orange: your coding agent connects to the world. Through MCP it can open your Figma file, drive a browser, read documentation. Guides 4.1 and 4.2. Three, green, the new one: the world's agents come to your site. Browser agents are visiting websites for people now, and they read your page through the accessibility tree. With WebMCP you can even hand them proper tools. That is why accessibility is at the start of the code half.">
+  <p class="eyebrow rise">The idea of the module</p>
+  <h2 class="rise">Three <span class="hl">directions</span></h2>
+  <div class="three-grid">
+    <div class="three-map rise" style="--d:150">
+      <svg viewBox="0 0 760 500" role="img" aria-label="Map of the three connections">
+        <g class="grat">
+          <ellipse cx="380" cy="250" rx="330" ry="230"/><ellipse cx="380" cy="250" rx="200" ry="230"/><ellipse cx="380" cy="250" rx="80" ry="230"/>
+          <line x1="50" y1="250" x2="710" y2="250"/><line x1="85" y1="140" x2="675" y2="140"/><line x1="85" y1="360" x2="675" y2="360"/>
+        </g>
+        <g class="route-g" data-route="1">
+          <path class="route r-app" d="M360 300 Q 230 300 150 400"/>
+          <path class="route r-app" d="M360 300 Q 300 380 330 440"/>
+        </g>
+        <g class="route-g" data-route="2">
+          <path class="route r-agent" d="M150 110 Q 250 60 370 70"/>
+          <path class="route r-agent" d="M150 110 Q 220 220 350 282"/>
+          <path class="route r-agent" d="M150 110 Q 110 200 120 240"/>
+        </g>
+        <g class="route-g" data-route="3">
+          <path class="route r-world" d="M640 150 Q 520 170 400 280"/>
+          <path class="route r-world" d="M660 380 Q 530 360 404 306"/>
+        </g>
+        <g class="node app-node"><rect x="320" y="266" width="84" height="62" rx="8"/><rect x="320" y="266" width="84" height="12" rx="4" class="bar"/><text x="362" y="352">your app</text></g>
+        <g class="node"><circle cx="150" cy="400" r="10"/><text x="150" y="430">APIs · live data</text></g>
+        <g class="node"><circle cx="330" cy="440" r="10"/><text x="330" y="470">AI in the browser</text></g>
+        <g class="node agent-node"><circle cx="150" cy="110" r="14"/><text x="150" y="86">your coding agent</text></g>
+        <g class="node"><circle cx="370" cy="70" r="10"/><text x="370" y="46">Figma</text></g>
+        <g class="node"><circle cx="120" cy="240" r="10"/><text x="120" y="270">docs</text></g>
+        <g class="node"><circle cx="640" cy="150" r="10"/><text x="640" y="126">browser agents</text></g>
+        <g class="node"><circle cx="660" cy="380" r="10"/><text x="660" y="410">screen readers</text></g>
+      </svg>
+    </div>
+    <div class="three-side">
+      <div class="route-btns rise" style="--d:250">
+        <button class="route-btn app" data-route="1"><span>1</span>Your app → the world</button>
+        <button class="route-btn agent" data-route="2"><span>2</span>Your agent → the world</button>
+        <button class="route-btn world" data-route="3"><span>3</span>The world's agents → your app</button>
+      </div>
+      <div class="route-say rise" style="--d:350" id="routeSay" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4 · HOW AN AGENT SEES YOUR PAGE ===== -->
+<section class="slide s-tree" data-notes="This is the most important idea in the code half, so let's see it. On the left, a small page. On the right, what a screen reader gets from it, which is also what most browser agents read: the accessibility tree. Run the agent with good HTML: it finds the button called Save and clicks it. Now switch to div soup. The page looks exactly the same. But the button is now a div with a click handler and a heart icon, and in the tree it is just 'generic'. Run the agent again: it can't find anything to save. A blind user is stuck in exactly the same place. So accessibility pays twice now: once for people, once for agents.">
+  <p class="eyebrow rise">Direction 3, up close</p>
+  <h2 class="rise">How does an agent <span class="hl">see</span> your page?</h2>
+  <div class="tree-grid rise" style="--d:200">
+    <div class="tree-page">
+      <div class="tp-bar"><i></i><i></i><i></i><span>hekla.example</span></div>
+      <div class="tp-body">
+        <div class="tp-nav"><span>Volcanoes</span><span>Map</span><span>About</span></div>
+        <div class="tp-search"><span class="tp-input">Search volcanoes…</span><span class="tp-go">Search</span></div>
+        <div class="tp-card">
+          <div class="tp-img" aria-hidden="true"></div>
+          <div><b>Hekla</b><p>Iceland's most active volcano, last erupted in 2000.</p></div>
+          <span class="tp-heart" title="save">♥</span>
+        </div>
+      </div>
+      <p class="caption">What you see. <b>Identical</b> in both versions.</p>
+    </div>
+    <div class="tree-side">
+      <div class="tabs" role="tablist">
+        <button class="tab on" data-mode="good" role="tab" aria-selected="true">Good HTML</button>
+        <button class="tab" data-mode="soup" role="tab" aria-selected="false">Div soup</button>
+      </div>
+      <pre class="ticket tree-out" id="treeOut"></pre>
+      <div class="agent-run">
+        <button class="btn" id="runAgent">▶ Run the agent: "save this article"</button>
+        <div class="agent-log" id="agentLog" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+  <p class="takeaway frag">Screen readers and AI agents read the <em>same tree</em>. Accessibility now pays twice.</p>
+</section>
+
+<!-- ===== 5 · SHAPE OF THE MODULE ===== -->
+<section class="slide s-shape" data-notes="The shape of the module. Design lectures first, code lectures second, then the group project. We keep them bundled so you can focus on one thing at a time; switching between design and code every other day costs everyone. And if you are a few days behind, you still get most lectures while you are on that topic. Every code guide starts from a file you make in a design guide. Click a design card to see where it goes. If your design file is rushed, you will feel it in the code week.">
+  <p class="eyebrow rise">The shape</p>
+  <h2 class="rise">Design first. Then code. <span class="hl">Same files.</span></h2>
+  <div class="shape rise" style="--d:200">
+    <div class="lane-name"><b>Design</b><span>first half</span></div>
+    <div class="pairs">
+      <button class="card design" data-pair="1"><b>Accessible UI</b><span>an annotated layout</span></button>
+      <button class="card design" data-pair="2"><b>Smart Components</b><span>components with properties</span></button>
+      <button class="card design" data-pair="3"><b>Redesign</b><span>desktop and mobile</span></button>
+      <button class="card design" data-pair="4"><b>Figma Animations</b><span>speciality: four motions</span></button>
+    </div>
+    <div class="lane-name"><b>Code</b><span>second half</span></div>
+    <div class="pairs">
+      <div class="card code" data-pair="1"><small>4.1 · 2 days</small><b>Accessible in use</b></div>
+      <div class="card code" data-pair="2"><small>4.2 · 2 days</small><b>Design system in code</b></div>
+      <div class="card code" data-pair="3"><small>4.3 · 3 days</small><b>APIs: make the redesign real</b></div>
+      <div class="card code" data-pair="4"><small>4.4 · 2 days</small><b>Motion and video</b></div>
+    </div>
+    <div class="lane-name"><b>Check</b><span>alongside</span></div>
+    <div class="bar-card">4.5 Module 4 check · auto-graded · AI off · the knowledge from all four</div>
+    <div class="lane-name"><b>Project</b><span>then</span></div>
+    <div class="bar-card project">Group project · Connecting to the World · day 1 is your team's harness</div>
+  </div>
+  <p class="pair-say" id="pairSay" aria-live="polite">Click a design card to see what it becomes.</p>
+</section>
+
+<!-- ===== 6 · 4.1 ===== -->
+<section class="slide s-g41" data-notes="Guide 4.1, Accessible in use. You start from the annotated layout from the design guide. Step one is the unusual one: you write the checks before you prompt. A Playwright test that walks your page with the keyboard only, and an axe scan. They fail, you commit them failing, then the agent builds until they pass. Step two is an experiment: build the page twice, once plain and once with an accessibility skill installed, and count the failures. Is the skill worth it? You measure it, you don't take my word for it. Step three: hand your page to an agent with browser tools and ask it to do the main task, then break one button and try again. Step four, no AI at all: keyboard, screen reader, 200 percent zoom.">
+  <p class="eyebrow rise">Code guide 4.1 · builds on Accessible UI</p>
+  <h2 class="rise">Accessible <span class="hl">in use</span></h2>
+  <div class="two">
+    <ol class="steps">
+      <li class="frag"><b>Checks first.</b> A keyboard-only test and an axe scan, written <em>before</em> you prompt. Commit them failing.</li>
+      <li class="frag"><b>Build it twice.</b> Plain agent vs agent + an accessibility skill. Count the failures. Is the skill worth it?</li>
+      <li class="frag"><b>Let an agent use it.</b> Give an agent browser tools and a task. Then turn one button into a div. Again.</li>
+      <li class="frag"><b>By hand, no AI.</b> Keyboard only, a screen reader, 200% zoom. What did the tests miss?</li>
+    </ol>
+    <pre class="ticket rise" style="--d:300"><span class="c">// keyboard.spec.ts · written before the page exists</span>
+<span class="k">test</span>(<span class="s">'keyboard only: search and save'</span>, <span class="k">async</span> ({ page }) => {
+  <span class="k">await</span> page.goto(<span class="s">'/'</span>);
+  <span class="k">await</span> page.keyboard.press(<span class="s">'Tab'</span>);
+  <span class="k">await</span> expect(page.getByRole(<span class="s">'searchbox'</span>)).toBeFocused();
+  <span class="k">await</span> page.keyboard.type(<span class="s">'Hekla'</span>);
+  <span class="k">await</span> page.keyboard.press(<span class="s">'Enter'</span>);
+  <span class="k">await</span> page.keyboard.press(<span class="s">'Tab'</span>);
+<span class="hi">  <span class="k">await</span> expect(page.getByRole(<span class="s">'button'</span>, { name: <span class="s">'Save'</span> }))
+    .toBeFocused();</span>});
+
+<span class="k">test</span>(<span class="s">'no serious axe violations'</span>, <span class="k">async</span> ({ page }) => {
+  <span class="k">await</span> page.goto(<span class="s">'/'</span>);
+  <span class="k">const</span> { violations } = <span class="k">await new</span> AxeBuilder({ page }).analyze();
+  expect(violations.filter(v => v.impact === <span class="s">'critical'</span>
+    || v.impact === <span class="s">'serious'</span>)).toEqual([]);
+});</pre>
+  </div>
+</section>
+
+<!-- ===== 7 · 4.2 ===== -->
+<section class="slide s-g42" data-notes="Guide 4.2, Design system in code. In Figma you gave components properties: a variant, a boolean, a text, an instance swap. Code has exactly the same idea. Click a property on the left and watch where it lands. Then switch framework: React, Vue, Angular. Different spelling, same four ideas. That is the whole point of having compared three frameworks in Module 3. Your design system becomes typed components plus tokens, with no hard-coded colour anywhere.">
+  <p class="eyebrow rise">Code guide 4.2 · builds on Smart Components &amp; Properties</p>
+  <h2 class="rise">Figma properties <span class="hl">are</span> props</h2>
+  <div class="map-grid rise" style="--d:200">
+    <div class="figma-panel">
+      <p class="fp-title">Button · properties</p>
+      <button class="fp-prop on" data-p="variant"><i>◇</i><span>Variant</span><em>primary · secondary</em></button>
+      <button class="fp-prop" data-p="text"><i>T</i><span>Text</span><em>Label</em></button>
+      <button class="fp-prop" data-p="bool"><i>◐</i><span>Boolean</span><em>Disabled</em></button>
+      <button class="fp-prop" data-p="swap"><i>⇄</i><span>Instance swap</span><em>Icon</em></button>
+      <p class="fp-say" id="propSay" aria-live="polite"></p>
+    </div>
+    <div class="code-side">
+      <div class="tabs" role="tablist">
+        <button class="tab on" data-fw="react" role="tab" aria-selected="true">React</button>
+        <button class="tab" data-fw="vue" role="tab" aria-selected="false">Vue</button>
+        <button class="tab" data-fw="angular" role="tab" aria-selected="false">Angular</button>
+      </div>
+      <pre class="ticket fw-code" id="fwCode"></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8 · TEACH THE AGENT ===== -->
+<section class="slide s-skill" data-notes="Second half of 4.2: teach your agent. Left alone, an agent invents a new button every time it needs one. Two places to put rules. AGENTS.md, or CLAUDE.md, is read at the start of every session, so keep it short. A skill is a folder with a SKILL.md; the agent only reads its one-line description up front, and opens the rest when the task needs it. Click the two requests and watch what the agent loads. Then you test the skill the same way as in 4.1: same request, fresh session, with and without, and count the made-up styles.">
+  <p class="eyebrow rise">Code guide 4.2 · part two</p>
+  <h2 class="rise">Teach your agent <span class="hl">your rules</span></h2>
+  <div class="skill-grid rise" style="--d:200">
+    <div class="files">
+      <div class="file-row always"><span class="fi">📄</span><code>AGENTS.md</code><em>read every session · keep it short</em></div>
+      <div class="file-row dir"><span class="fi">📁</span><code>skills/use-our-design-system/</code></div>
+      <div class="file-row nested" id="skillRow"><span class="fi">📄</span><code>SKILL.md</code><em id="skillState">only the description is read</em></div>
+      <div class="asks">
+        <p class="dim">Ask the agent:</p>
+        <button class="btn btn-ghost ask" data-ask="readme">"Fix a typo in the README"</button>
+        <button class="btn btn-ghost ask" data-ask="page">"Build a settings page"</button>
+      </div>
+      <div class="ctx" aria-live="polite"><span class="ctx-label">What the agent has read</span><div class="ctx-bar"><i class="c-sys"></i><i class="c-agents"></i><i class="c-desc"></i><i class="c-skill" id="ctxSkill"></i></div><p class="ctx-say" id="ctxSay">Pick a request.</p></div>
+    </div>
+    <pre class="ticket skill-md"><span class="c">---</span>
+<span class="m">name:</span> use-our-design-system
+<span class="m">description:</span> Use when building or changing any UI
+  in this repo. Lists our components, our tokens and
+  the rules for using them.
+<span class="c">---</span>
+<span class="k"># Our design system</span>
+- Buttons: <span class="s">&lt;Button variant="primary|secondary"&gt;</span>.
+  Never a styled div.
+- Colours: only tokens from <span class="s">tokens.css</span>. No hex
+  values inside components.
+- Spacing: <span class="s">--space-1</span> to <span class="s">--space-6</span>.
+- Before adding a component, look in
+  <span class="s">src/components/</span>. It probably exists.
+- Every icon-only button gets a name.</pre>
+  </div>
+</section>
+
+<!-- ===== 9 · 4.3 ===== -->
+<section class="slide s-g43" data-notes="Guide 4.3, make the redesign real. You redesigned Wikipedia, IMDb or computer.is. Now you build it against live data, with a schema that checks every response, and with designed loading, empty and error states. Then the fun part: an AI feature that costs nothing, using the model built into Chrome. And you write the loop that lets it call your functions. Step through it. The model never touches the internet. It only asks, in JSON. Your code decides, runs the function, validates the answer and hands it back. That loop is every AI agent there is, including the one you code with. MCP is a standard plug for exactly this, so any agent can use your tools.">
+  <p class="eyebrow rise">Code guide 4.3 · builds on Redesign</p>
+  <h2 class="rise">Every agent is <span class="hl">this loop</span></h2>
+  <div class="loop-grid rise" style="--d:200">
+    <div class="loop-stage">
+      <div class="actor" data-a="user"><b>You</b><span>the person</span></div>
+      <div class="actor" data-a="model"><b>Model</b><span>built into Chrome</span></div>
+      <div class="actor" data-a="code"><b>Your code</b><span>decides and runs</span></div>
+      <div class="actor" data-a="api"><b>Wikipedia API</b><span>the world</span></div>
+      <svg class="loop-arrow" id="loopArrow" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 H1000"/></svg>
+    </div>
+    <div class="loop-detail">
+      <div class="row-btns"><button class="btn" id="loopNext">Next step →</button><button class="btn btn-ghost" id="loopReset">Start over</button><span class="dim" id="loopCount">step 0 / 6</span></div>
+      <p class="loop-say" id="loopSay">Press "Next step".</p>
+      <pre class="ticket loop-code" id="loopCode"></pre>
+    </div>
+  </div>
+  <p class="takeaway frag">The model only <em>asks</em>. Your code decides. MCP is a standard plug for this loop.</p>
+</section>
+
+<!-- ===== 10 · OUTDATED? ===== -->
+<section class="slide s-outdated" data-notes="Some of you have read that MCP and skills are already outdated, because models now make tools on the fly. I went and checked. MCP got a large new specification in July 2026 and Figma, AWS, Cloudflare and Microsoft build on it. Skills became a shared format that about 45 tools read. What did go out of fashion is putting an MCP server on everything. So here is how we treat it: the left column lasts, the right column changes every few months. We teach the left column, using whatever is in the right column this autumn. And one more thing: a model can write a SKILL.md file. It cannot write what you learned.">
+  <p class="eyebrow rise">An honest question</p>
+  <h2 class="rise">Are MCP and skills <span class="hl">already outdated?</span></h2>
+  <div class="cols rise" style="--d:200">
+    <div class="col lasts">
+      <h3>Lasts</h3>
+      <ul>
+        <li class="frag">An agent is a model, plus tools, plus context, plus checks</li>
+        <li class="frag">Deciding what an agent may touch, and what it may not</li>
+        <li class="frag">Writing down what only you know</li>
+        <li class="frag">Measuring whether a setup actually helps</li>
+      </ul>
+    </div>
+    <div class="col changes">
+      <h3>Changes every few months</h3>
+      <ul>
+        <li class="frag">File names and folder layouts</li>
+        <li class="frag">Protocol versions (MCP got a new one in July 2026)</li>
+        <li class="frag">Product names, and which tool is hot this month</li>
+        <li class="frag">"Put an MCP server on everything" (that one is already out)</li>
+      </ul>
+    </div>
+  </div>
+  <p class="takeaway frag">A model can write a SKILL.md. <em>It can't write what you learned.</em></p>
+</section>
+
+<!-- ===== 11 · FILMS ===== -->
+<section class="slide s-films" data-notes="You've seen these three. The watercolour island, Player 2, and the neo-punk film about AI. Here is the thing you might not know: every one of them is a web page. HTML, CSS and JavaScript, animated on a timeline and rendered frame by frame into an MP4. Click one to play it if we want a reminder. That is why video is a code guide in this module, and a core one: making a film is front-end work.">
+  <p class="eyebrow rise">You've seen these</p>
+  <h2 class="rise">Every one of them is a <span class="hl">web page</span></h2>
+  <div class="films rise" style="--d:200">
+    <figure class="film">
+      <video src="assets/island.mp4" poster="assets/island.jpg" controls preload="none" playsinline></video>
+      <figcaption><b>The Sustainable Island 2027</b><span>Watercolour · p5.js + p5.brush · 70 s</span></figcaption>
+    </figure>
+    <figure class="film">
+      <video src="assets/player2.mp4" poster="assets/player2.jpg" controls preload="none" playsinline></video>
+      <figcaption><b>Player 2 óskast</b><span>Arcade · HTML + GSAP in HyperFrames · 81 s</span></figcaption>
+    </figure>
+    <figure class="film">
+      <video src="assets/neopunk.mp4" poster="assets/neopunk.jpg" controls preload="none" playsinline></video>
+      <figcaption><b>Vefþróun með gervigreind</b><span>Neo-punk pixel · canvas + HyperFrames · 2 min</span></figcaption>
+    </figure>
+  </div>
+  <p class="takeaway frag">HTML, CSS and JavaScript on a timeline, rendered <em>frame by frame</em> into an MP4.</p>
+</section>
+
+<!-- ===== 12 · 4.4 ===== -->
+<section class="slide s-g44" data-notes="Guide 4.4, Motion and video. Part one: the animations from the Figma guide, built for real in your redesign. CSS for the simple ones, View Transitions for the page change, Motion or GSAP for one complex one. And every one respects reduced motion. Try it here: open the drawer, then switch on reduce motion and open it again. Nothing important is lost, the movement just goes. Part two: a 30 to 60 second launch film for your redesign, storyboard first, as we did. Part three: your own style library, which is the next slide.">
+  <p class="eyebrow rise">Code guide 4.4 · builds on Figma Animations</p>
+  <h2 class="rise">Motion, then <span class="hl">a film</span></h2>
+  <div class="two">
+    <ol class="steps">
+      <li class="frag"><b>Motion in the product.</b> Drawer, hover, toggle, page change. CSS, View Transitions, and Motion or GSAP for one complex one. Name the animation principle each one uses.</li>
+      <li class="frag"><b>Respect reduced motion.</b> Test it with the setting on. Motion never carries meaning on its own.</li>
+      <li class="frag"><b>A 30–60 s launch film</b> of your redesign. Storyboard page first, feedback, build, render, captions.</li>
+      <li class="frag"><b>Your style library.</b> What you tried, what broke, how to make another one.</li>
+    </ol>
+    <div class="drawer-demo rise" style="--d:300">
+      <div class="dd-screen" id="ddScreen">
+        <div class="dd-top"><button class="dd-burger" id="ddOpen" aria-label="Open menu" aria-expanded="false">☰</button><span>my redesign</span></div>
+        <div class="dd-lines"><i></i><i></i><i></i><i></i></div>
+        <div class="dd-scrim" id="ddScrim"></div>
+        <nav class="dd-drawer" id="ddDrawer" aria-label="Demo menu"><b>Menu</b><span>Articles</span><span>Saved</span><span>About</span></nav>
+      </div>
+      <label class="dd-toggle"><input type="checkbox" id="ddReduce"> prefers-reduced-motion</label>
+      <p class="caption" id="ddSay">Open the drawer, then switch reduced motion on and open it again.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 13 · WHAT ONLY YOU KNOW ===== -->
+<section class="slide s-know" data-notes="This is what an agent did not know when we made those films. These are real lines from our style library. Press Start 2P breaks Icelandic capitals. Jersey 15 is only readable at exactly 22 pixels. The Icelandic voice service we wanted stopped answering, so we use Gunnar. The watercolour style takes seconds per frame and the laptop gets hot. No model knew any of it. We found out by failing, and we wrote it down, and the next film was faster. That is what a skill really is. You end 4.4 with your own.">
+  <p class="eyebrow rise">From our style library</p>
+  <h2 class="rise">What no model <span class="hl">knew</span></h2>
+  <div class="stickies">
+    <div class="sticky frag" style="--r:-2deg"><b>Fonts</b>Press Start 2P breaks Icelandic accented capitals. Use it for Latin text and digits only.</div>
+    <div class="sticky frag" style="--r:1.5deg"><b>Pixel grids</b>Jersey 15 is readable at exactly 22 px (or 44, 66). At 15–20 px its R turns into an A.</div>
+    <div class="sticky frag" style="--r:-1deg"><b>Voices</b>The Tiro service stopped responding. Gunnar (Edge neural) is the Icelandic voice that works.</div>
+    <div class="sticky frag" style="--r:2deg"><b>Render cost</b>Watercolour: seconds per frame, the laptop gets hot. Arcade: 80 s renders in 1.5 min.</div>
+    <div class="sticky frag" style="--r:-1.5deg"><b>Test words</b>Check GERVIGREIND, KÓÐANN, ÞÚ, ÆÐI in any font before you build anything.</div>
+  </div>
+  <p class="takeaway frag">Found by failing, then <em>written down</em>. That is what a skill really is.</p>
+</section>
+
+<!-- ===== 14 · LEARN ===== -->
+<section class="slide s-learn" data-notes="Now, how to use AI so you actually learn. In January Anthropic ran a study with 52 developers learning a new library. The group with AI scored 50 percent on the quiz afterwards, the group without scored 67. The biggest gap was debugging. But look at the patterns. People who handed everything to the AI scored under 40. People who asked conceptual questions, or generated code and then asked about it, scored 65 or more, as well as the group without AI. Click a pattern to see what it sounds like. I'm telling you this because it works: another study this autumn found that simply knowing what offloading costs you makes people do it less.">
+  <p class="eyebrow rise">So you actually learn</p>
+  <h2 class="rise">It's <span class="hl">how</span> you use it</h2>
+  <div class="learn-grid rise" style="--d:200">
+    <div class="patterns">
+      <div class="pat-col low">
+        <h3>Under 40%</h3>
+        <button class="pat" data-pat="deleg">Hand the whole task to the AI</button>
+        <button class="pat" data-pat="prog">Start yourself, slowly hand it all over</button>
+        <button class="pat" data-pat="debug">Let the AI do all the debugging</button>
+      </div>
+      <div class="pat-col high">
+        <h3>65% or more</h3>
+        <button class="pat" data-pat="concept">Ask only conceptual questions</button>
+        <button class="pat" data-pat="hybrid">Ask for code plus an explanation</button>
+        <button class="pat" data-pat="gen">Generate, then interrogate it</button>
+      </div>
+    </div>
+    <div class="pat-say" id="patSay" aria-live="polite">
+      <p class="dim">Click a pattern.</p>
+    </div>
+  </div>
+  <p class="caption rise" style="--d:400">Anthropic, January 2026: 52 developers learning a new library. Quiz afterwards: <b>50%</b> with AI, <b>67%</b> without. Small study, one sitting, no retention test.</p>
+</section>
+
+<!-- ===== 15 · RULES ===== -->
+<section class="slide s-rules" data-notes="Six rules for every guide in this module. Checks before prompts. Ask, then interrogate. Once a week, a short session with the AI off, mostly debugging; the 4.5 check is the graded version. Once a week you walk a teacher or a classmate through a random part of your own code for ten or fifteen minutes; that one is backed by three semesters of data from a university that allows AI. When the agent is stuck, you have a drill, because beginners give up three to four times as often as experienced people. And every report keeps the section you already know from Module 3: what the AI got wrong.">
+  <p class="eyebrow rise">Every guide</p>
+  <h2 class="rise">Six <span class="hl">rules</span></h2>
+  <div class="rules-grid">
+    <div class="rule frag"><span class="num">1</span><b>Checks before prompts</b>Write the test or the acceptance check first. Small diffs, git every step.</div>
+    <div class="rule frag"><span class="num">2</span><b>Ask, then interrogate</b>Never accept a whole task unread. Ask why, ask what else, ask what breaks.</div>
+    <div class="rule frag"><span class="num">3</span><b>AI off, once a week</b>A short debugging session by hand. The 4.5 check is the graded version.</div>
+    <div class="rule frag"><span class="num">4</span><b>Defend it out loud</b>Weekly, 10–15 min: walk someone through a random part of your own code.</div>
+    <div class="rule frag"><span class="num">5</span><b>When the agent is stuck</b>Reset the context · smaller step · a failing test · read the error yourself · <code>git reset</code>.</div>
+    <div class="rule frag"><span class="num">6</span><b>What the AI got wrong</b>A section in every report, as in Module 3. Plus the prompts that mattered.</div>
+  </div>
+</section>
+
+<!-- ===== 16 · AHEAD OR BEHIND ===== -->
+<section class="slide s-pace" data-notes="Different speeds. If you finish everything, there are two specialities. One: let agents use your site with WebMCP, which Chrome is testing right now. Two: package your design-system skill or your style library so other people can install it, and review a skill somebody else wrote. If you are behind: 4.1 and 4.3 first, because the group project needs the keyboard demo and the APIs. 4.2 can be finished inside the group project as your team's design system. And I'll run back-to-basics sessions, chosen from what the 4.5 check shows.">
+  <p class="eyebrow rise">Different speeds</p>
+  <h2 class="rise">Ahead, or <span class="hl">behind?</span></h2>
+  <div class="cols rise" style="--d:200">
+    <div class="col">
+      <h3>Finished everything?</h3>
+      <ul>
+        <li><b>Speciality · WebMCP.</b> Give your 4.3 app tools that browser agents can call. What would you let an agent do?</li>
+        <li><b>Speciality · Publish a skill.</b> Package your design system or style library for others, and review someone else's.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>A few days behind?</h3>
+      <ul>
+        <li><b>4.1 and 4.3 first.</b> The group project needs the keyboard demo and the APIs.</li>
+        <li><b>4.2 can wait</b> and be finished in the group project, as your team's design system.</li>
+        <li><b>Back-to-basics sessions,</b> picked from what the 4.5 check shows.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 17 · GROUP PROJECT ===== -->
+<section class="slide s-project" data-notes="The group project, so you know where this goes. Same theme, Connecting to the World. Three changes. You choose the framework, and you argue for it with what you learned comparing three in Module 3. Day one is your team's harness: one AGENTS.md, the design-system skill, the accessibility tests from 4.1 and CI that runs them on every pull request, and a rule that a human who can explain it reviews every pull request, the agent's too. And in the presentation, next to the keyboard walkthrough, you show what you taught your agent and one time it was wrong. APIs stay mandatory. Your built-in-AI feature counts as an extra, not instead.">
+  <p class="eyebrow rise">Where this goes</p>
+  <h2 class="rise">The group <span class="hl">project</span></h2>
+  <div class="proj-grid">
+    <div class="pcard frag"><b>Your framework</b>React, Vue, Angular or something else. Argue the choice with what you learned in Module 3.</div>
+    <div class="pcard frag hot"><b>Day 1: the team harness</b>One AGENTS.md · the design-system skill · the 4.1 tests · CI on every pull request · a human reviews every PR, the agent's too.</div>
+    <div class="pcard frag"><b>APIs, still mandatory</b>Live data from at least one API. The built-in AI feature is an extra, not a replacement.</div>
+    <div class="pcard frag"><b>Keyboard only, live</b>The whole main flow on stage without a mouse. Focus always visible.</div>
+    <div class="pcard frag hot"><b>New in the presentation</b>What you taught your agent, and one time it was wrong.</div>
+    <div class="pcard frag"><b>Optional trailer</b>Open your presentation with a launch film made the way you made it in 4.4.</div>
+  </div>
+</section>
+
+<!-- ===== 18 · CHECK YOUR LAPTOP ===== -->
+<section class="slide s-laptop" data-notes="Homework before the code half: check your laptop. The AI feature in 4.3 runs on the model built into Chrome, so nobody pays for anything. But it needs 22 gigabytes of free disk and either a graphics card with more than 4 gigabytes of memory, or 16 gigabytes of RAM and 4 cores. Press the button: it asks this browser whether the model is available, without downloading anything. If yours can't, you pair with someone whose laptop can. For the film in 4.4 you need Node 22 or newer and FFmpeg. If you work in Codex, it has a browser built in that your agent can use for the checks in 4.1.">
+  <p class="eyebrow rise">Before the code half</p>
+  <h2 class="rise">Check your <span class="hl">laptop</span></h2>
+  <div class="two">
+    <div class="check-list rise" style="--d:200">
+      <h3>4.3 · AI built into Chrome (free)</h3>
+      <ul class="why-list">
+        <li><span class="tick">✓</span><span>Chrome on Windows, macOS or Linux. <b>Not on phones.</b></span></li>
+        <li><span class="tick">✓</span><span><b>22 GB</b> free disk for the model</span></li>
+        <li><span class="tick">✓</span><span>A GPU with <b>more than 4 GB</b> of memory, <em>or</em> <b>16 GB RAM</b> and 4 cores</span></li>
+      </ul>
+      <h3>4.4 · the film</h3>
+      <ul class="why-list">
+        <li><span class="tick">✓</span><span><code>node -v</code> says 22 or newer</span></li>
+        <li><span class="tick">✓</span><span><code>ffmpeg -version</code> answers</span></li>
+      </ul>
+    </div>
+    <div class="probe rise" style="--d:300">
+      <button class="btn" id="probeBtn">Ask this browser</button>
+      <pre class="ticket" id="probeOut"><span class="c">// LanguageModel.availability() — asks, downloads nothing</span></pre>
+      <p class="caption">Can't run it? Pair with someone who can. Working in Codex? Its built-in browser works for the checks in 4.1.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 19 · END ===== -->
+<section class="slide s-end" data-notes="That's the module. Connect your app to the world. Connect your agent to the world. And build pages the world's agents, and everyone using a screen reader, can actually use. The design guides start now. Links are on screen and in the LMS.">
+  <div class="end-map rise" style="--d:100" aria-hidden="true">
+    <svg viewBox="0 0 640 220">
+      <path class="route r-app" d="M320 150 Q 190 120 60 180"/>
+      <path class="route r-agent" d="M90 40 Q 200 60 310 140"/>
+      <path class="route r-world" d="M590 50 Q 470 80 332 142"/>
+      <circle class="city app" cx="320" cy="150" r="14"/>
+    </svg>
+  </div>
+  <h2 class="rise" style="--d:250">Connect your app. Connect your agent.<br><span class="hl">Let the world's agents in.</span></h2>
+  <div class="links rise" style="--d:500">
+    <a class="btn" href="https://io.vefskoli.is/guides" target="_blank" rel="noopener">the guides in the LMS</a>
+    <a class="btn btn-ghost" href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank" rel="noopener">WCAG 2.2 quick reference</a>
+    <a class="btn btn-ghost" href="https://developer.chrome.com/docs/ai/prompt-api" target="_blank" rel="noopener">Chrome Prompt API</a>
+    <a class="btn btn-ghost" href="https://agentskills.io" target="_blank" rel="noopener">agentskills.io</a>
+    <a class="btn btn-ghost" href="https://modelcontextprotocol.io" target="_blank" rel="noopener">modelcontextprotocol.io</a>
+  </div>
+</section>
+
+</div><!-- /deck -->
+
+<!-- ===== chrome ===== -->
+<div id="progress"></div>
+<div class="chrome">
+  <span class="plate"><span class="mode">M4</span><span id="counter">1 / 19</span><span class="dim">vefskólinn · connecting to the world</span></span>
+  <span class="plate right"><span class="dim">→ next · ← prev · N notes · ? help</span></span>
+  <span class="nav"><button id="prevBtn" aria-label="Previous">←</button><button id="nextBtn" aria-label="Next">→</button></span>
+</div>
+<div id="notes"><p class="eyebrow">Speaker notes · N to hide</p><div id="notesText"></div></div>
+<div id="help">
+  <div class="card">
+    <h3>Keys</h3>
+    <table>
+      <tr><td><kbd>→</kbd> <kbd>space</kbd></td><td>next step</td></tr>
+      <tr><td><kbd>←</kbd></td><td>previous</td></tr>
+      <tr><td><kbd>Home</kbd> <kbd>End</kbd></td><td>first / last slide</td></tr>
+      <tr><td><kbd>N</kbd></td><td>speaker notes</td></tr>
+      <tr><td><kbd>F</kbd></td><td>fullscreen</td></tr>
+      <tr><td><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></td><td>on the three directions: pick a route</td></tr>
+      <tr><td><kbd>?</kbd></td><td>this help</td></tr>
+    </table>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
