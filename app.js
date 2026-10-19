@@ -214,20 +214,20 @@
   $(".s-tree").addEventListener("slide:enter", () => { resetAgent(); renderTree(); });
   renderTree();
 
-  /* ---------- slide 5 · design → code pairs ---------- */
+  /* ---------- slide 5 · code → design pairs ---------- */
   const PAIRS = {
-    1: `<b>Accessible UI → 4.1.</b> Your annotations (alt text, focus order, headings, landmarks) become the tests you write before the agent builds anything.`,
-    2: `<b>Smart Components → 4.2.</b> Every Figma property becomes a typed prop, your variables become tokens, and your agent gets a skill that makes it use them.`,
-    3: `<b>Redesign → 4.3.</b> Your redesign gets built for real, against live data from an API, with the loading, empty and error states designed too.`,
-    4: `<b>Figma Animations → 4.4.</b> The motions get built in code, and then you make a launch film of your redesign. No speciality file? 4.4 gives you four motions to start from.`,
+    1: `<b>4.1 → Accessible UI.</b> The headings, focus order and alt text you decide in <code>spec.md</code> come back as annotations in Figma, checked with Stark.`,
+    2: `<b>4.2 → Smart Components.</b> Your typed props come back as component properties in Figma, and your tokens as variables.`,
+    3: `<b>4.3 → Redesign.</b> The loading, empty and error states you built for live data are what a good redesign has to design too.`,
+    4: `<b>4.4 → Figma Animations.</b> The motion you built in code gets designed first in Figma, with smart animate. A speciality, for those who get there.`,
   };
-  $$(".s-shape .card.design").forEach(c => c.addEventListener("click", () => {
+  $$(".s-shape .card.code").forEach(c => c.addEventListener("click", () => {
     $$(".s-shape .card").forEach(x => x.classList.toggle("lit", x.dataset.pair === c.dataset.pair));
     $("#pairSay").innerHTML = PAIRS[c.dataset.pair];
   }));
   $(".s-shape").addEventListener("slide:enter", () => {
     $$(".s-shape .card").forEach(x => x.classList.remove("lit"));
-    $("#pairSay").textContent = "Click a design card to see what it becomes.";
+    $("#pairSay").textContent = "Click a code card to see where it goes next.";
   });
 
   /* ---------- slide 7 · Figma properties → props ---------- */

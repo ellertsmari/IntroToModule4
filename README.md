@@ -8,19 +8,21 @@ in three directions:
 - your agent → the world (MCP, skills)
 - the world's agents → your app (the accessibility tree, WebMCP)
 
-It then walks through the design half: Accessible UI, Smart Components &
-Properties, Redesign, and the Figma Animations speciality. After that come the
-four code guides that build on the design files:
+It then walks through the code half, which comes first in the semester
+(weeks 43–44): four guides that grow one page, each followed later by a design
+guide that takes the same idea into Figma:
 
-- 4.1 Accessible in use
-- 4.2 Design system in code
-- 4.3 APIs: make the redesign real
-- 4.4 Motion and video
+- 4.1 Accessible in use → Accessible UI
+- 4.2 Design system in code → Smart Components & Properties
+- 4.3 APIs: connect your page → Redesign
+- 4.4 Motion and video → the Figma Animations speciality
 
-After those it covers the auto-graded 4.5 check, the rules for using AI so
-students actually learn, and the group project: first the design sprint, then
-the build. Divider slides mark where the design half ends and the code half
-begins, which is a natural point to hand over between teachers.
+After the code guides come the auto-graded 4.5 check and the rules for using
+AI so students actually learn. Then the design half (weeks 44–45): Accessible
+UI, Smart Components & Properties, Redesign and the Figma Animations
+speciality. The deck ends with the group project, first the design sprint and
+then the build. Divider slides mark where the code half ends and the design
+half begins, which is a natural point to hand over between teachers.
 
 The look is a vintage route map: cream paper, navy ink, and one route colour per
 direction (blue, orange, green). Body text is Atkinson Hyperlegible, a typeface

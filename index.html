@@ -54,7 +54,7 @@
   <div class="path rise" style="--d:200">
     <div class="stop"><b>Module 3</b><span>The fundamentals: TypeScript, frameworks, a first back end</span></div>
     <span class="arrow">→</span>
-    <div class="stop now"><b>Module 4 guides</b><span>Design first, then code. About four weeks</span></div>
+    <div class="stop now"><b>Module 4 guides</b><span>Code first, then design. About four weeks</span></div>
     <span class="arrow">→</span>
     <div class="stop"><b>Group project</b><span>Connecting to the World. Groups of 4–5</span></div>
   </div>
@@ -152,203 +152,55 @@
 </section>
 
 <!-- ===== 5 · SHAPE OF THE MODULE ===== -->
-<section class="slide s-shape" data-notes="The shape of the module. Design lectures first, code lectures second, then the group project. We keep them bundled so you can focus on one thing at a time; switching between design and code every other day costs everyone. And if you are a few days behind, you still get most lectures while you are on that topic. Every code guide starts from a file you make in a design guide. Click a design card to see where it goes. If your design file is rushed, you will feel it in the code week.">
+<section class="slide s-shape" data-notes="The shape of the module. Code first, these two weeks, then design, then the group project. In code you grow one page through four guides: you build it in 4.1, turn it into a design system in 4.2, connect it to live data in 4.3 and make it move in 4.4. Then each design guide takes one of those ideas into Figma, so when the design lectures get to annotations or component properties, you have already built the thing in code. Click a code card to see where it goes next.">
   <p class="eyebrow rise">The shape</p>
-  <h2 class="rise">Design first. Then code. <span class="hl">Same files.</span></h2>
+  <h2 class="rise">Code first. Then design. <span class="hl">Same ideas.</span></h2>
   <div class="shape rise" style="--d:200">
-    <div class="lane-name"><b>Design</b><span>first half</span></div>
+    <div class="lane-name"><b>Code</b><span>weeks 43–44</span></div>
     <div class="pairs">
-      <button class="card design" data-pair="1"><b>Accessible UI</b><span>an annotated layout</span></button>
-      <button class="card design" data-pair="2"><b>Smart Components</b><span>components with properties</span></button>
-      <button class="card design" data-pair="3"><b>Redesign</b><span>desktop and mobile</span></button>
-      <button class="card design" data-pair="4"><b>Figma Animations</b><span>speciality: four motions</span></button>
+      <button class="card code" data-pair="1"><small>4.1 · 2 days</small><b>Accessible in use</b></button>
+      <button class="card code" data-pair="2"><small>4.2 · 2 days</small><b>Design system in code</b></button>
+      <button class="card code" data-pair="3"><small>4.3 · 3 days</small><b>APIs: connect your page</b></button>
+      <button class="card code" data-pair="4"><small>4.4 · 2 days</small><b>Motion and video</b></button>
     </div>
-    <div class="lane-name"><b>Code</b><span>second half</span></div>
+    <div class="lane-name"><b>Design</b><span>weeks 44–45</span></div>
     <div class="pairs">
-      <div class="card code" data-pair="1"><small>4.1 · 2 days</small><b>Accessible in use</b></div>
-      <div class="card code" data-pair="2"><small>4.2 · 2 days</small><b>Design system in code</b></div>
-      <div class="card code" data-pair="3"><small>4.3 · 3 days</small><b>APIs: make the redesign real</b></div>
-      <div class="card code" data-pair="4"><small>4.4 · 2 days</small><b>Motion and video</b></div>
+      <div class="card design" data-pair="1"><b>Accessible UI</b><span>an annotated layout</span></div>
+      <div class="card design" data-pair="2"><b>Smart Components</b><span>components with properties</span></div>
+      <div class="card design" data-pair="3"><b>Redesign</b><span>desktop and mobile</span></div>
+      <div class="card design" data-pair="4"><b>Figma Animations</b><span>speciality: four motions</span></div>
     </div>
     <div class="lane-name"><b>Check</b><span>alongside</span></div>
     <div class="bar-card">4.5 Module 4 check · auto-graded · AI off · the knowledge from all four</div>
     <div class="lane-name"><b>Project</b><span>then</span></div>
     <div class="bar-card project">Group project · Connecting to the World · day 1 is your team's harness</div>
   </div>
-  <p class="pair-say" id="pairSay" aria-live="polite">Click a design card to see what it becomes.</p>
-</section>
-
-<!-- ===== DESIGN DIVIDER ===== -->
-<section class="slide s-divider design" data-notes="First half: design. Three guides and a speciality. Accessible UI, Smart Components and Properties, Redesign, and the Figma Animations speciality for those who get there. Everything you make here is used again in the code half, so take your Figma files seriously: from this year they are the input for real code.">
-  <p class="eyebrow rise">First half</p>
-  <h1 class="rise" style="--d:150"><span class="hl">Design</span></h1>
-  <ol class="div-list rise" style="--d:350">
-    <li><b>Accessible UI</b><span>Contrast, touch targets, annotations for the developer</span></li>
-    <li><b>Smart Components &amp; Properties</b><span>Components that adapt, like real UI elements in code</span></li>
-    <li><b>Redesign</b><span>Turn a "meh" website into one that works for everyone</span></li>
-    <li class="spec"><b>Figma Animations</b><span>Speciality: make your prototype move</span></li>
-  </ol>
-</section>
-
-<!-- ===== DESIGN · ACCESSIBLE UI · THE NUMBERS ===== -->
-<section class="slide s-contrast" data-notes="Accessible UI, part one: the numbers, so you can judge a design without a plugin telling you. AA is the level you have to hit: it is what the European Accessibility Act and basically every client contract asks for. AAA is a bonus. Body text needs 4.5 to 1. Large text, around 24 pixels or 19 bold, needs 3 to 1, and so do icons and the borders of input fields, which people forget because there is no text. Click the pairs, or pick your own colours. Fix contrast while you choose the palette, not at the end. On the right, touch targets: 24 by 24 is the AA minimum, 44 is the target, and a 16 pixel icon with padding around it can still be a 44 pixel target. And there is no minimum font size in WCAG; what it asks is that text can zoom to 200 percent without the layout breaking.">
-  <p class="eyebrow rise">Design guide · Accessible UI</p>
-  <h2 class="rise">Know the <span class="hl">numbers</span></h2>
-  <div class="contrast-grid rise" style="--d:200">
-    <div class="cc">
-      <div class="cc-preview" id="ccPreview">
-        <p class="cc-big">Large text, 24 px</p>
-        <p class="cc-small">Body text at 16 px has to pass 4.5 : 1. Icons and input borders need 3 : 1.</p>
-        <div class="cc-ui"><span class="cc-input">Email</span><span class="cc-icon">★</span></div>
-      </div>
-      <div class="cc-controls">
-        <div class="cc-pairs">
-          <button class="cc-pair" data-fg="#9a9a9a" data-bg="#ffffff"><i style="background:#9a9a9a"></i>light grey on white</button>
-          <button class="cc-pair" data-fg="#767676" data-bg="#ffffff"><i style="background:#767676"></i>#767676 on white</button>
-          <button class="cc-pair" data-fg="#ffffff" data-bg="#ff8a1f"><i style="background:#ff8a1f"></i>white on orange</button>
-          <button class="cc-pair" data-fg="#1c2838" data-bg="#f3ead8"><i style="background:#1c2838"></i>navy on cream</button>
-        </div>
-        <div class="cc-pick">
-          <label>text <input type="color" id="ccFg" value="#9a9a9a"></label>
-          <label>background <input type="color" id="ccBg" value="#ffffff"></label>
-        </div>
-      </div>
-    </div>
-    <div class="cc-side">
-      <p class="cc-ratio"><span id="ccRatio">2.8</span> : 1</p>
-      <ul class="cc-checks" id="ccChecks"></ul>
-      <div class="target-demo">
-        <div class="td-box"><span class="td-hit"></span><span class="td-icon">♥</span></div>
-        <p><b>Touch targets:</b> 24 × 24 px is the AA minimum, <b>44 × 44</b> is the target (Apple and Google agree). Padding counts.</p>
-      </div>
-    </div>
-  </div>
-  <p class="takeaway frag">Aim for <em>AA everywhere</em>. Take AAA where it comes for free. No minimum font size, but text must survive <em>200% zoom</em>.</p>
-</section>
-
-<!-- ===== DESIGN · ACCESSIBLE UI · ANNOTATIONS ===== -->
-<section class="slide s-annot" data-notes="Accessible UI, part two: annotations. These are not paperwork. From this year the developers implement them, and the developers are you, in guide 4.1. What the code can't invent is your judgement about this design: which image is decorative, what the alt text should say, what order a keyboard user moves through the page, which heading is which, which part is the navigation. Toggle the layers. And notice the alt text: describe what the image is doing on this page, not what is in it. The same photo gets different alt text on two different pages. Return: a one or two page layout in Figma, run through Stark, with every annotation and a comment on why.">
-  <p class="eyebrow rise">Design guide · Accessible UI</p>
-  <h2 class="rise">Annotations that end up <span class="hl">in the product</span></h2>
-  <div class="annot-grid rise" style="--d:200">
-    <div class="annot-frame show-alt" id="annotFrame">
-      <div class="af-region af-header"></div>
-      <span class="af-logo">◆ Hekla Trips</span>
-      <span class="af-link" style="left:470px">Tours</span><span class="af-link" style="left:560px">About</span><span class="af-link" style="left:650px">Contact</span>
-      <div class="af-region af-nav"></div>
-      <div class="af-region af-main"></div>
-      <div class="af-img"></div>
-      <b class="af-h1">Walk on a volcano</b>
-      <span class="af-btn">Book a tour</span>
-      <b class="af-h2" style="left:40px">Day tours</b><i class="af-line" style="left:40px;top:300px"></i><i class="af-line" style="left:40px;top:318px;width:220px"></i>
-      <b class="af-h2" style="left:400px">Gear we lend you</b><i class="af-line" style="left:400px;top:300px"></i><i class="af-line" style="left:400px;top:318px;width:200px"></i>
-      <span class="af-deco">〰〰</span>
-      <div class="af-region af-footer"></div><span class="af-foot">© Hekla Trips</span>
-      <!-- annotation pins -->
-      <span class="pin p-alt" style="left:52px;top:200px">alt: "A guide leading hikers up Hekla's snowy ridge"</span>
-      <span class="pin p-alt" style="left:560px;top:332px">decorative · alt=""</span>
-      <span class="pin p-focus" style="left:441px;top:18px">1</span><span class="pin p-focus" style="left:531px;top:18px">2</span><span class="pin p-focus" style="left:621px;top:18px">3</span><span class="pin p-focus" style="left:334px;top:163px">4</span>
-      <span class="pin p-head" style="left:338px;top:84px">H1</span><span class="pin p-head" style="left:6px;top:256px">H2</span><span class="pin p-head" style="left:366px;top:256px">H2</span>
-      <span class="pin p-lm" style="left:10px;top:42px">header</span><span class="pin p-lm" style="left:468px;top:42px">nav</span><span class="pin p-lm" style="left:10px;top:72px">main</span><span class="pin p-lm" style="left:10px;top:374px">footer</span>
-    </div>
-    <div class="annot-side">
-      <div class="layer-btns">
-        <button class="layer on" data-layer="alt">Alt text</button>
-        <button class="layer" data-layer="focus">Focus order</button>
-        <button class="layer" data-layer="head">Headings</button>
-        <button class="layer" data-layer="lm">Landmarks</button>
-      </div>
-      <div class="annot-say" id="annotSay" aria-live="polite"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== DESIGN · SMART COMPONENTS ===== -->
-<section class="slide s-smart" data-notes="Smart Components and Properties. Instead of copying and pasting ten versions of a button, you build one component whose text, toggles, icon and variant are properties. Try the panel: change the variant, type a new label, turn the icon on, swap it, disable it. One component, every state. This is exactly how a component works in React, Vue or Angular, where properties are called props, and in the code half you will turn this panel into typed code. Return: a style guide with at least five components, good names, all with properties, and a simple design puzzled together from them.">
-  <p class="eyebrow rise">Design guide · Smart Components &amp; Properties</p>
-  <h2 class="rise">One component, <span class="hl">every state</span></h2>
-  <div class="smart-grid rise" style="--d:200">
-    <div class="smart-canvas">
-      <p class="sc-name" id="scName">Button / Primary / Default</p>
-      <div class="sc-stage"><button class="sc-btn primary" id="scBtn" tabindex="-1"><span class="sc-ic" id="scIc" hidden>★</span><span id="scLabel">Book a tour</span></button></div>
-      <p class="caption">Auto layout keeps it the right size whatever the label says.</p>
-    </div>
-    <div class="smart-panel">
-      <p class="fp-title">Properties</p>
-      <div class="sp-row"><span><i>◇</i> Variant</span><div class="seg" id="spVariant"><button class="on" data-v="primary">Primary</button><button data-v="secondary">Secondary</button><button data-v="ghost">Ghost</button></div></div>
-      <div class="sp-row"><span><i>T</i> Label</span><input type="text" id="spLabel" value="Book a tour" maxlength="24" aria-label="Label"></div>
-      <div class="sp-row"><span><i>◐</i> Show icon</span><label class="sw"><input type="checkbox" id="spIcon"><b></b></label></div>
-      <div class="sp-row"><span><i>⇄</i> Icon</span><div class="seg" id="spSwap"><button class="on" data-i="★">★</button><button data-i="♥">♥</button><button data-i="→">→</button></div></div>
-      <div class="sp-row"><span><i>◐</i> Disabled</span><label class="sw"><input type="checkbox" id="spDisabled"><b></b></label></div>
-    </div>
-  </div>
-  <p class="takeaway frag">Return: a style guide with <em>5+ components</em>, good names, <em>every one with properties</em>, and a small design built from them.</p>
-</section>
-
-<!-- ===== DESIGN · REDESIGN ===== -->
-<section class="slide s-redesign" data-notes="Redesign. Pick one of three not-so-sparkling websites: computer.is, the IMDb title pages, or Wikipedia articles. Redesign at least one desktop screen and one mobile screen, and present them side by side with the old one. A redesign is not only about looking fresher; it is about working better for everyone, so use what you learned in Accessible UI. And when you critique, name what is wrong: the ten usability heuristics give you the words, so your critique is more than 'it looks old'. Click a few. In the code half, your redesign gets built for real against live data.">
-  <p class="eyebrow rise">Design guide · Redesign</p>
-  <h2 class="rise">From "meh" to <span class="hl">works for everyone</span></h2>
-  <div class="redesign-grid rise" style="--d:200">
-    <div class="sites">
-      <div class="site"><b>computer.is</b><span>Busy and cluttered, many font styles, a text-heavy right side, weak on mobile.</span></div>
-      <div class="site"><b>IMDb title pages</b><span>Narrow boxed layout, hard to scan, hard-to-read type.</span></div>
-      <div class="site"><b>Wikipedia articles</b><span>Lines stretched across the whole screen, no real navigation system.</span></div>
-      <p class="caption">Return: at least <b>one desktop</b> and <b>one mobile</b> screen, side by side with the old site.</p>
-    </div>
-    <div class="heur">
-      <p class="heur-title">Name what's wrong · the 10 usability heuristics</p>
-      <div class="heur-chips" id="heurChips"></div>
-      <p class="heur-say" id="heurSay" aria-live="polite">Click a heuristic.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== DESIGN · FIGMA ANIMATIONS ===== -->
-<section class="slide s-feel" data-notes="The Figma Animations speciality, for those who finish the design guides. The idea is see, then feel: if a design looks playful, its motion should feel playful too, and if it looks calm and serious, so should the motion. Try the same toggle with three different feelings. The assignment is four components with variants that animate: a button that opens a drawer from the side, a hover animation, a toggle, and a transition between two pages. Smart animate between variants does most of the work. In the code half everybody builds motion like this for real, speciality or not.">
-  <p class="eyebrow rise">Design speciality · Figma Animations · 6–8 h</p>
-  <h2 class="rise">See it, then <span class="hl">feel it</span></h2>
-  <div class="feel-grid rise" style="--d:200">
-    <div class="feel-demo">
-      <div class="seg mood" id="moodSeg"><button class="on" data-m="calm">Calm</button><button data-m="playful">Playful</button><button data-m="snappy">Snappy</button></div>
-      <div class="feel-stage mood-calm" id="feelStage">
-        <button class="tgl" id="tgl" aria-pressed="false" aria-label="Demo toggle"><i></i></button>
-        <button class="hov">Hover me</button>
-      </div>
-      <p class="caption" id="moodSay">Calm: 400 ms, ease-in-out. Click the toggle.</p>
-    </div>
-    <ol class="steps">
-      <li><b>A drawer</b> that slides in from the side, and back out when you click the background.</li>
-      <li><b>A hover animation:</b> colour, stretch, anything with character.</li>
-      <li><b>A toggle</b> that switches on and off, changing colour or shape.</li>
-      <li><b>A page transition</b> on the click of a button.</li>
-    </ol>
-  </div>
-  <p class="takeaway frag">Four components with variants, joined by <em>smart animate</em>. In the code half, everyone builds motion for real.</p>
+  <p class="pair-say" id="pairSay" aria-live="polite">Click a code card to see where it goes next.</p>
 </section>
 
 <!-- ===== CODE DIVIDER ===== -->
-<section class="slide s-divider code" data-notes="Second half: code. Four guides, each starting from one of the design files you just made, plus a short auto-graded check. The coding lectures come as a bundle after the design lectures, so you can stay on one topic at a time.">
-  <p class="eyebrow rise">Second half</p>
+<section class="slide s-divider code" data-notes="First half: code, these two weeks. Four guides that grow one page, plus a short auto-graded check. The coding lectures come as a bundle before the design lectures, so you can stay on one topic at a time.">
+  <p class="eyebrow rise">First half</p>
   <h1 class="rise" style="--d:150"><span class="hl">Code</span></h1>
   <ol class="div-list rise" style="--d:350">
-    <li><b>4.1 Accessible in use</b><span>Your annotations become tests, then the agent builds</span></li>
+    <li><b>4.1 Accessible in use</b><span>One page, three sections. Your decisions become tests, then the agent builds</span></li>
     <li><b>4.2 Design system in code</b><span>Properties become typed props; your agent learns your rules</span></li>
-    <li><b>4.3 APIs: make the redesign real</b><span>Live data, and AI that runs in the browser</span></li>
-    <li><b>4.4 Motion and video</b><span>The animations in code, then a launch film</span></li>
+    <li><b>4.3 APIs: connect your page</b><span>Live data, and AI that runs in the browser</span></li>
+    <li><b>4.4 Motion and video</b><span>Motion in your page, then a launch film</span></li>
   </ol>
 </section>
 
 <!-- ===== 6 · 4.1 ===== -->
-<section class="slide s-g41" data-notes="Guide 4.1, Accessible in use. You start from the annotated layout from the design guide. Step one is the unusual one: you write the checks before you prompt. A Playwright test that walks your page with the keyboard only, and an axe scan. They fail, you commit them failing, then the agent builds until they pass. Step two is an experiment: build the page twice, once plain and once with an accessibility skill installed, and count the failures. Is the skill worth it? You measure it, you don't take my word for it. Step three: hand your page to an agent with browser tools and ask it to do the main task, then break one button and try again. Step four, no AI at all: keyboard, screen reader, 200 percent zoom.">
-  <p class="eyebrow rise">Code guide 4.1 · builds on Accessible UI</p>
+<section class="slide s-g41" data-notes="Guide 4.1, Accessible in use. Everyone builds the same three sections: a search with results, a details dialog and a sign-up form, styled with your Module 3 style guide. Pick a topic that has a free API, because this page grows through all four code guides. Step one is the unusual one. Before you prompt, you write spec.md: the headings, the focus order and the alt text, the decisions an agent cannot make for you. And you write the checks: A Playwright test that walks your page with the keyboard only, and an axe scan. They fail, you commit them failing, then the agent builds until they pass. Step two is an experiment: build the page twice, once plain and once with an accessibility skill installed, and count the failures. Is the skill worth it? You measure it, you don't take my word for it. Step three: hand your page to an agent with browser tools and ask it to do the main task, then break one button and try again. Step four, no AI at all: keyboard, screen reader, 200 percent zoom. You return one landing page with links to project A, project B and your report, plus the repo with the tests running in GitHub Actions. Then you review two classmates: mouse away, do their main task with the keyboard, then with a screen reader, and write down every step where you got stuck. You pass if you could finish the task with the keyboard. And remember: your grade comes from the reviews you write, so be specific.">
+  <p class="eyebrow rise">Code guide 4.1 · one page: search, dialog, sign-up form</p>
   <h2 class="rise">Accessible <span class="hl">in use</span></h2>
   <div class="two">
     <ol class="steps">
-      <li class="frag"><b>Checks first.</b> A keyboard-only test and an axe scan, written <em>before</em> you prompt. Commit them failing.</li>
+      <li class="frag"><b>Spec and checks first.</b> Headings, focus order and alt text in <code>spec.md</code>. A keyboard test and an axe scan, written <em>before</em> you prompt.</li>
       <li class="frag"><b>Build it twice.</b> Plain agent vs agent + an accessibility skill. Count the failures. Is the skill worth it?</li>
       <li class="frag"><b>Let an agent use it.</b> Give an agent browser tools and a task. Then turn one button into a div. Again.</li>
       <li class="frag"><b>By hand, no AI.</b> Keyboard only, a screen reader, 200% zoom. What did the tests miss?</li>
+      <li class="frag"><b>Return and review.</b> One landing page: A, B and your report. Then do two classmates' main task, <em>mouse away</em>.</li>
     </ol>
     <pre class="ticket rise" style="--d:300"><span class="c">// keyboard.spec.ts · written before the page exists</span>
 <span class="k">test</span>(<span class="s">'keyboard only: search and save'</span>, <span class="k">async</span> ({ page }) => {
@@ -371,8 +223,8 @@
 </section>
 
 <!-- ===== 7 · 4.2 ===== -->
-<section class="slide s-g42" data-notes="Guide 4.2, Design system in code. In Figma you gave components properties: a variant, a boolean, a text, an instance swap. Code has exactly the same idea. Click a property on the left and watch where it lands. Then switch framework: React, Vue, Angular. Different spelling, same four ideas. That is the whole point of having compared three frameworks in Module 3. Your design system becomes typed components plus tokens, with no hard-coded colour anywhere.">
-  <p class="eyebrow rise">Code guide 4.2 · builds on Smart Components &amp; Properties</p>
+<section class="slide s-g42" data-notes="Guide 4.2, Design system in code. Your 4.1 page has buttons, fields and cards written one at a time. You turn them into components with props: a variant, a boolean, a text, swappable content. Next week in Smart Components you meet exactly the same four ideas in Figma, where they are called properties. Click a property on the left and watch where it lands. Then switch framework: React, Vue, Angular. Different spelling, same four ideas. That is the whole point of having compared three frameworks in Module 3. Your design system becomes typed components plus tokens, with no hard-coded colour anywhere.">
+  <p class="eyebrow rise">Code guide 4.2 · builds on your 4.1 page</p>
   <h2 class="rise">Figma properties <span class="hl">are</span> props</h2>
   <div class="map-grid rise" style="--d:200">
     <div class="figma-panel">
@@ -429,8 +281,8 @@
 </section>
 
 <!-- ===== 9 · 4.3 ===== -->
-<section class="slide s-g43" data-notes="Guide 4.3, make the redesign real. You redesigned Wikipedia, IMDb or computer.is. Now you build it against live data, with a schema that checks every response, and with designed loading, empty and error states. Then the fun part: an AI feature that costs nothing, using the model built into Chrome. And you write the loop that lets it call your functions. Step through it. The model never touches the internet. It only asks, in JSON. Your code decides, runs the function, validates the answer and hands it back. That loop is every AI agent there is, including the one you code with. MCP is a standard plug for exactly this, so any agent can use your tools.">
-  <p class="eyebrow rise">Code guide 4.3 · builds on Redesign</p>
+<section class="slide s-g43" data-notes="Guide 4.3, connect your page to the world. The JSON file from 4.1 is replaced by a live API; Wikipedia works for almost any topic. You build it with a schema that checks every response, and with designed loading, empty and error states. Then the fun part: an AI feature that costs nothing, using the model built into Chrome. And you write the loop that lets it call your functions. Step through it. The model never touches the internet. It only asks, in JSON. Your code decides, runs the function, validates the answer and hands it back. That loop is every AI agent there is, including the one you code with. MCP is a standard plug for exactly this, so any agent can use your tools.">
+  <p class="eyebrow rise">Code guide 4.3 · builds on your 4.2 page</p>
   <h2 class="rise">Every agent is <span class="hl">this loop</span></h2>
   <div class="loop-grid rise" style="--d:200">
     <div class="loop-stage">
@@ -498,19 +350,19 @@
 </section>
 
 <!-- ===== 12 · 4.4 ===== -->
-<section class="slide s-g44" data-notes="Guide 4.4, Motion and video. Part one: the animations from the Figma guide, built for real in your redesign. CSS for the simple ones, View Transitions for the page change, Motion or GSAP for one complex one. And every one respects reduced motion. Try it here: open the drawer, then switch on reduce motion and open it again. Nothing important is lost, the movement just goes. Part two: a 30 to 60 second launch film for your redesign, storyboard first, as we did. Part three: your own style library, which is the next slide.">
-  <p class="eyebrow rise">Code guide 4.4 · builds on Figma Animations</p>
+<section class="slide s-g44" data-notes="Guide 4.4, Motion and video. Part one: motion in your page. The dialog, the save toggle, a menu drawer on mobile, and the results changing when you search. CSS for the simple ones, View Transitions for the page change, Motion or GSAP for one complex one. And every one respects reduced motion. Try it here: open the drawer, then switch on reduce motion and open it again. Nothing important is lost, the movement just goes. Part two: a 30 to 60 second launch film for your page, storyboard first, as we did. Part three: your own style library, which is the next slide.">
+  <p class="eyebrow rise">Code guide 4.4 · builds on your 4.3 page</p>
   <h2 class="rise">Motion, then <span class="hl">a film</span></h2>
   <div class="two">
     <ol class="steps">
-      <li class="frag"><b>Motion in the product.</b> Drawer, hover, toggle, page change. CSS, View Transitions, and Motion or GSAP for one complex one. Name the animation principle each one uses.</li>
+      <li class="frag"><b>Motion in the product.</b> Dialog, save toggle, menu drawer, results changing. CSS, View Transitions, and Motion or GSAP for one complex one. Name the animation principle each one uses.</li>
       <li class="frag"><b>Respect reduced motion.</b> Test it with the setting on. Motion never carries meaning on its own.</li>
-      <li class="frag"><b>A 30–60 s launch film</b> of your redesign. Storyboard page first, feedback, build, render, captions.</li>
+      <li class="frag"><b>A 30–60 s launch film</b> of your page. Storyboard page first, feedback, build, render, captions.</li>
       <li class="frag"><b>Your style library.</b> What you tried, what broke, how to make another one.</li>
     </ol>
     <div class="drawer-demo rise" style="--d:300">
       <div class="dd-screen" id="ddScreen">
-        <div class="dd-top"><button class="dd-burger" id="ddOpen" aria-label="Open menu" aria-expanded="false">☰</button><span>my redesign</span></div>
+        <div class="dd-top"><button class="dd-burger" id="ddOpen" aria-label="Open menu" aria-expanded="false">☰</button><span>my page</span></div>
         <div class="dd-lines"><i></i><i></i><i></i><i></i></div>
         <div class="dd-scrim" id="ddScrim"></div>
         <nav class="dd-drawer" id="ddDrawer" aria-label="Demo menu"><b>Menu</b><span>Articles</span><span>Saved</span><span>About</span></nav>
@@ -575,8 +427,157 @@
   </div>
 </section>
 
+<!-- ===== DESIGN DIVIDER ===== -->
+<section class="slide s-divider design" data-notes="Second half: design. Three guides and a speciality. Accessible UI, Smart Components and Properties, Redesign, and the Figma Animations speciality for those who get there. Each one takes an idea you already built in code into Figma, and in the group project your Figma files become the input for real code.">
+  <p class="eyebrow rise">Second half</p>
+  <h1 class="rise" style="--d:150"><span class="hl">Design</span></h1>
+  <ol class="div-list rise" style="--d:350">
+    <li><b>Accessible UI</b><span>Contrast, touch targets, annotations for the developer</span></li>
+    <li><b>Smart Components &amp; Properties</b><span>Components that adapt, like real UI elements in code</span></li>
+    <li><b>Redesign</b><span>Turn a "meh" website into one that works for everyone</span></li>
+    <li class="spec"><b>Figma Animations</b><span>Speciality: make your prototype move</span></li>
+  </ol>
+</section>
+
+<!-- ===== DESIGN · ACCESSIBLE UI · THE NUMBERS ===== -->
+<section class="slide s-contrast" data-notes="Accessible UI, part one: the numbers, so you can judge a design without a plugin telling you. AA is the level you have to hit: it is what the European Accessibility Act and basically every client contract asks for. AAA is a bonus. Body text needs 4.5 to 1. Large text, around 24 pixels or 19 bold, needs 3 to 1, and so do icons and the borders of input fields, which people forget because there is no text. Click the pairs, or pick your own colours. Fix contrast while you choose the palette, not at the end. On the right, touch targets: 24 by 24 is the AA minimum, 44 is the target, and a 16 pixel icon with padding around it can still be a 44 pixel target. And there is no minimum font size in WCAG; what it asks is that text can zoom to 200 percent without the layout breaking.">
+  <p class="eyebrow rise">Design guide · Accessible UI</p>
+  <h2 class="rise">Know the <span class="hl">numbers</span></h2>
+  <div class="contrast-grid rise" style="--d:200">
+    <div class="cc">
+      <div class="cc-preview" id="ccPreview">
+        <p class="cc-big">Large text, 24 px</p>
+        <p class="cc-small">Body text at 16 px has to pass 4.5 : 1. Icons and input borders need 3 : 1.</p>
+        <div class="cc-ui"><span class="cc-input">Email</span><span class="cc-icon">★</span></div>
+      </div>
+      <div class="cc-controls">
+        <div class="cc-pairs">
+          <button class="cc-pair" data-fg="#9a9a9a" data-bg="#ffffff"><i style="background:#9a9a9a"></i>light grey on white</button>
+          <button class="cc-pair" data-fg="#767676" data-bg="#ffffff"><i style="background:#767676"></i>#767676 on white</button>
+          <button class="cc-pair" data-fg="#ffffff" data-bg="#ff8a1f"><i style="background:#ff8a1f"></i>white on orange</button>
+          <button class="cc-pair" data-fg="#1c2838" data-bg="#f3ead8"><i style="background:#1c2838"></i>navy on cream</button>
+        </div>
+        <div class="cc-pick">
+          <label>text <input type="color" id="ccFg" value="#9a9a9a"></label>
+          <label>background <input type="color" id="ccBg" value="#ffffff"></label>
+        </div>
+      </div>
+    </div>
+    <div class="cc-side">
+      <p class="cc-ratio"><span id="ccRatio">2.8</span> : 1</p>
+      <ul class="cc-checks" id="ccChecks"></ul>
+      <div class="target-demo">
+        <div class="td-box"><span class="td-hit"></span><span class="td-icon">♥</span></div>
+        <p><b>Touch targets:</b> 24 × 24 px is the AA minimum, <b>44 × 44</b> is the target (Apple and Google agree). Padding counts.</p>
+      </div>
+    </div>
+  </div>
+  <p class="takeaway frag">Aim for <em>AA everywhere</em>. Take AAA where it comes for free. No minimum font size, but text must survive <em>200% zoom</em>.</p>
+</section>
+
+<!-- ===== DESIGN · ACCESSIBLE UI · ANNOTATIONS ===== -->
+<section class="slide s-annot" data-notes="Accessible UI, part two: annotations. These are not paperwork. You made the same decisions in code in 4.1, in spec.md. Here they move to where they belong, the design, so the developer can implement them; in the group project that developer is you. What the code can't invent is your judgement about this design: which image is decorative, what the alt text should say, what order a keyboard user moves through the page, which heading is which, which part is the navigation. Toggle the layers. And notice the alt text: describe what the image is doing on this page, not what is in it. The same photo gets different alt text on two different pages. Return: a one or two page layout in Figma, run through Stark, with every annotation and a comment on why.">
+  <p class="eyebrow rise">Design guide · Accessible UI</p>
+  <h2 class="rise">Annotations that end up <span class="hl">in the product</span></h2>
+  <div class="annot-grid rise" style="--d:200">
+    <div class="annot-frame show-alt" id="annotFrame">
+      <div class="af-region af-header"></div>
+      <span class="af-logo">◆ Hekla Trips</span>
+      <span class="af-link" style="left:470px">Tours</span><span class="af-link" style="left:560px">About</span><span class="af-link" style="left:650px">Contact</span>
+      <div class="af-region af-nav"></div>
+      <div class="af-region af-main"></div>
+      <div class="af-img"></div>
+      <b class="af-h1">Walk on a volcano</b>
+      <span class="af-btn">Book a tour</span>
+      <b class="af-h2" style="left:40px">Day tours</b><i class="af-line" style="left:40px;top:300px"></i><i class="af-line" style="left:40px;top:318px;width:220px"></i>
+      <b class="af-h2" style="left:400px">Gear we lend you</b><i class="af-line" style="left:400px;top:300px"></i><i class="af-line" style="left:400px;top:318px;width:200px"></i>
+      <span class="af-deco">〰〰</span>
+      <div class="af-region af-footer"></div><span class="af-foot">© Hekla Trips</span>
+      <!-- annotation pins -->
+      <span class="pin p-alt" style="left:52px;top:200px">alt: "A guide leading hikers up Hekla's snowy ridge"</span>
+      <span class="pin p-alt" style="left:560px;top:332px">decorative · alt=""</span>
+      <span class="pin p-focus" style="left:441px;top:18px">1</span><span class="pin p-focus" style="left:531px;top:18px">2</span><span class="pin p-focus" style="left:621px;top:18px">3</span><span class="pin p-focus" style="left:334px;top:163px">4</span>
+      <span class="pin p-head" style="left:338px;top:84px">H1</span><span class="pin p-head" style="left:6px;top:256px">H2</span><span class="pin p-head" style="left:366px;top:256px">H2</span>
+      <span class="pin p-lm" style="left:10px;top:42px">header</span><span class="pin p-lm" style="left:468px;top:42px">nav</span><span class="pin p-lm" style="left:10px;top:72px">main</span><span class="pin p-lm" style="left:10px;top:374px">footer</span>
+    </div>
+    <div class="annot-side">
+      <div class="layer-btns">
+        <button class="layer on" data-layer="alt">Alt text</button>
+        <button class="layer" data-layer="focus">Focus order</button>
+        <button class="layer" data-layer="head">Headings</button>
+        <button class="layer" data-layer="lm">Landmarks</button>
+      </div>
+      <div class="annot-say" id="annotSay" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DESIGN · SMART COMPONENTS ===== -->
+<section class="slide s-smart" data-notes="Smart Components and Properties. Instead of copying and pasting ten versions of a button, you build one component whose text, toggles, icon and variant are properties. Try the panel: change the variant, type a new label, turn the icon on, swap it, disable it. One component, every state. This is exactly how a component works in React, Vue or Angular, where properties are called props, and you already built this panel as typed props in 4.2. Return: a style guide with at least five components, good names, all with properties, and a simple design puzzled together from them.">
+  <p class="eyebrow rise">Design guide · Smart Components &amp; Properties</p>
+  <h2 class="rise">One component, <span class="hl">every state</span></h2>
+  <div class="smart-grid rise" style="--d:200">
+    <div class="smart-canvas">
+      <p class="sc-name" id="scName">Button / Primary / Default</p>
+      <div class="sc-stage"><button class="sc-btn primary" id="scBtn" tabindex="-1"><span class="sc-ic" id="scIc" hidden>★</span><span id="scLabel">Book a tour</span></button></div>
+      <p class="caption">Auto layout keeps it the right size whatever the label says.</p>
+    </div>
+    <div class="smart-panel">
+      <p class="fp-title">Properties</p>
+      <div class="sp-row"><span><i>◇</i> Variant</span><div class="seg" id="spVariant"><button class="on" data-v="primary">Primary</button><button data-v="secondary">Secondary</button><button data-v="ghost">Ghost</button></div></div>
+      <div class="sp-row"><span><i>T</i> Label</span><input type="text" id="spLabel" value="Book a tour" maxlength="24" aria-label="Label"></div>
+      <div class="sp-row"><span><i>◐</i> Show icon</span><label class="sw"><input type="checkbox" id="spIcon"><b></b></label></div>
+      <div class="sp-row"><span><i>⇄</i> Icon</span><div class="seg" id="spSwap"><button class="on" data-i="★">★</button><button data-i="♥">♥</button><button data-i="→">→</button></div></div>
+      <div class="sp-row"><span><i>◐</i> Disabled</span><label class="sw"><input type="checkbox" id="spDisabled"><b></b></label></div>
+    </div>
+  </div>
+  <p class="takeaway frag">Return: a style guide with <em>5+ components</em>, good names, <em>every one with properties</em>, and a small design built from them.</p>
+</section>
+
+<!-- ===== DESIGN · REDESIGN ===== -->
+<section class="slide s-redesign" data-notes="Redesign. Pick one of three not-so-sparkling websites: computer.is, the IMDb title pages, or Wikipedia articles. Redesign at least one desktop screen and one mobile screen, and present them side by side with the old one. A redesign is not only about looking fresher; it is about working better for everyone, so use what you learned in Accessible UI. And when you critique, name what is wrong: the ten usability heuristics give you the words, so your critique is more than 'it looks old'. Click a few. In 4.3 you built loading, empty and error states for live data; a good redesign needs them too.">
+  <p class="eyebrow rise">Design guide · Redesign</p>
+  <h2 class="rise">From "meh" to <span class="hl">works for everyone</span></h2>
+  <div class="redesign-grid rise" style="--d:200">
+    <div class="sites">
+      <div class="site"><b>computer.is</b><span>Busy and cluttered, many font styles, a text-heavy right side, weak on mobile.</span></div>
+      <div class="site"><b>IMDb title pages</b><span>Narrow boxed layout, hard to scan, hard-to-read type.</span></div>
+      <div class="site"><b>Wikipedia articles</b><span>Lines stretched across the whole screen, no real navigation system.</span></div>
+      <p class="caption">Return: at least <b>one desktop</b> and <b>one mobile</b> screen, side by side with the old site.</p>
+    </div>
+    <div class="heur">
+      <p class="heur-title">Name what's wrong · the 10 usability heuristics</p>
+      <div class="heur-chips" id="heurChips"></div>
+      <p class="heur-say" id="heurSay" aria-live="polite">Click a heuristic.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DESIGN · FIGMA ANIMATIONS ===== -->
+<section class="slide s-feel" data-notes="The Figma Animations speciality, for those who finish the design guides. The idea is see, then feel: if a design looks playful, its motion should feel playful too, and if it looks calm and serious, so should the motion. Try the same toggle with three different feelings. The assignment is four components with variants that animate: a button that opens a drawer from the side, a hover animation, a toggle, and a transition between two pages. Smart animate between variants does most of the work. In 4.4 everybody built motion in code; here you design it first.">
+  <p class="eyebrow rise">Design speciality · Figma Animations · 6–8 h</p>
+  <h2 class="rise">See it, then <span class="hl">feel it</span></h2>
+  <div class="feel-grid rise" style="--d:200">
+    <div class="feel-demo">
+      <div class="seg mood" id="moodSeg"><button class="on" data-m="calm">Calm</button><button data-m="playful">Playful</button><button data-m="snappy">Snappy</button></div>
+      <div class="feel-stage mood-calm" id="feelStage">
+        <button class="tgl" id="tgl" aria-pressed="false" aria-label="Demo toggle"><i></i></button>
+        <button class="hov">Hover me</button>
+      </div>
+      <p class="caption" id="moodSay">Calm: 400 ms, ease-in-out. Click the toggle.</p>
+    </div>
+    <ol class="steps">
+      <li><b>A drawer</b> that slides in from the side, and back out when you click the background.</li>
+      <li><b>A hover animation:</b> colour, stretch, anything with character.</li>
+      <li><b>A toggle</b> that switches on and off, changing colour or shape.</li>
+      <li><b>A page transition</b> on the click of a button.</li>
+    </ol>
+  </div>
+  <p class="takeaway frag">Four components with variants, joined by <em>smart animate</em>. In 4.4 you built motion in code. Here you <em>design</em> it first.</p>
+</section>
+
 <!-- ===== 16 · AHEAD OR BEHIND ===== -->
-<section class="slide s-pace" data-notes="Different speeds. If you finish everything, there are specialities. On the design side, Figma Animations. On the code side, two. One: let agents use your site with WebMCP, which Chrome is testing right now. Two: package your design-system skill or your style library so other people can install it, and review a skill somebody else wrote. If you are behind: 4.1 and 4.3 first, because the group project needs the keyboard demo and the APIs. 4.2 can be finished inside the group project as your team's design system. And I'll run back-to-basics sessions, chosen from what the 4.5 check shows.">
+<section class="slide s-pace" data-notes="Different speeds. If you finish everything, there are specialities. On the design side, Figma Animations. On the code side, two. One: let agents use your site with WebMCP, which Chrome is testing right now. Two: package your design-system skill or your style library so other people can install it, and review a skill somebody else wrote. If you are behind: 4.1 and 4.3 first, because the group project needs the keyboard demo and the APIs. 4.2 can be finished inside the group project as your team's design system; if you skip it for now, 4.3 builds on your 4.1 page. And I'll run back-to-basics sessions, chosen from what the 4.5 check shows.">
   <p class="eyebrow rise">Different speeds</p>
   <h2 class="rise">Ahead, or <span class="hl">behind?</span></h2>
   <div class="cols rise" style="--d:200">
@@ -632,8 +633,8 @@
 </section>
 
 <!-- ===== 18 · CHECK YOUR LAPTOP ===== -->
-<section class="slide s-laptop" data-notes="Homework before the code half: check your laptop. The AI feature in 4.3 runs on the model built into Chrome, so nobody pays for anything. But it needs 22 gigabytes of free disk and either a graphics card with more than 4 gigabytes of memory, or 16 gigabytes of RAM and 4 cores. Press the button: it asks this browser whether the model is available, without downloading anything. If yours can't, you pair with someone whose laptop can. For the film in 4.4 you need Node 22 or newer and FFmpeg. If you work in Codex, it has a browser built in that your agent can use for the checks in 4.1.">
-  <p class="eyebrow rise">Before the code half</p>
+<section class="slide s-laptop" data-notes="Homework this week: check your laptop. The AI feature in 4.3 runs on the model built into Chrome, so nobody pays for anything. But it needs 22 gigabytes of free disk and either a graphics card with more than 4 gigabytes of memory, or 16 gigabytes of RAM and 4 cores. Press the button: it asks this browser whether the model is available, without downloading anything. If yours can't, you pair with someone whose laptop can. For the film in 4.4 you need Node 22 or newer and FFmpeg. If you work in Codex, it has a browser built in that your agent can use for the checks in 4.1.">
+  <p class="eyebrow rise">Homework this week</p>
   <h2 class="rise">Check your <span class="hl">laptop</span></h2>
   <div class="two">
     <div class="check-list rise" style="--d:200">
@@ -658,7 +659,7 @@
 </section>
 
 <!-- ===== 19 · END ===== -->
-<section class="slide s-end" data-notes="That's the module. Design for everyone. Connect your app to the world, and your agent. And build pages that the world's agents, and everyone using a screen reader, can actually use. The design guides start now. Links are on screen and in the LMS.">
+<section class="slide s-end" data-notes="That's the module. Design for everyone. Connect your app to the world, and your agent. And build pages that the world's agents, and everyone using a screen reader, can actually use. You are already working on 4.1; the other three code guides follow, then design. Links are on screen and in the LMS.">
   <div class="end-map rise" style="--d:100" aria-hidden="true">
     <svg viewBox="0 0 640 220">
       <path class="route r-app" d="M320 150 Q 190 120 60 180"/>
